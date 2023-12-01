@@ -1,3 +1,15 @@
+// Axios https://rapidapi.com/guides/call-apis-using-axios-in-typescript
+
+// npm install axios 
+
+// npm i --save-dev @types/node
+
+const axios = require('axios');
+
+function getCards {
+    
+}
+
 const world = 'World';
 
 export function interprilatingStrings(who: string = world): string {
