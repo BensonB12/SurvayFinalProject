@@ -1,4 +1,4 @@
-interface CardResponse {
+export interface CardResponse {
     "name": string,             // Archangel Avacyn
     "names": string[],          // 'Archangel Avacyn', 'Avacyn, the Purifier'
     "manaCost": string,         // {3}{W}{W}

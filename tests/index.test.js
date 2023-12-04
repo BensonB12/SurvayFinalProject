@@ -1,11 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const index_1 = require("../src/index");
-// describe('testing index file', () => {
-//   test('empty string should result in zero', () => {
-//     expect(add('')).toBe(0);
-//   });
-// });
+
 describe('testing index file', () => {
     test('InterpilatingStrings works, should be Hello World', () => {
         expect((0, index_1.interprilatingStrings)()).toBe('Hello World!');
