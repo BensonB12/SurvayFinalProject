@@ -4,11 +4,11 @@
 
 // npm i --save-dev @types/node
 
+import {} from 'responseObjects.ts'
+
 const axios = require('axios');
 
-function getCards {
-    
-}
+
 
 const world = 'World';
 
