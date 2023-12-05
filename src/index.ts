@@ -4,7 +4,7 @@
 
 // npm i --save-dev @types/node
 
-import {CardResponse} from 'responseObjects.ts';
+import {CardResponse} from './responseObjects.js';
 
 const axios = require('axios');
 

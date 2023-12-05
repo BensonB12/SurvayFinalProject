@@ -27,12 +27,12 @@ export interface CardResponse {
     "id": string
 }
 
-interface Ruling {
+export interface Ruling {
     "date": string,
     "text": string
 }
 
-interface ForeignName {
+export interface ForeignName {
     "name": string,
     "language": string,
     "multiverseid": number
