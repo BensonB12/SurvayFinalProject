@@ -36,49 +36,47 @@
                         <input type="number" id="cmc" step="1" min="0" pattern="\d+"/>
                     </li>
                     <li> <!-- done -->
-                        <label for="colors">Colors:</label>
+                        <label >Colors:</label>
                         <input type="checkbox" name="color" value="White"> White
                         <input type="checkbox" name="color" value="Blue"> Blue
                         <input type="checkbox" name="color" value="Black"> Black
                         <input type="checkbox" name="color" value="Red"> Red
                         <input type="checkbox" name="color" value="Green"> Green
                         <input type="checkbox" id="colorless" value="Colorless" onchange="handleColorSelection()"> Colorless
+                        <input type="checkbox" id="colorsExclusive" value="true"> Exclusively these colors
                     </li>
                     <li> <!-- done -->
-                        <label for="colorIdentity">Color Identity:</label>
+                        <label >Color Identity:</label>
                         <input type="checkbox" name="colorI" value="WhiteI"> White
                         <input type="checkbox" name="colorI" value="BlueI"> Blue
                         <input type="checkbox" name="colorI" value="BlackI"> Black
                         <input type="checkbox" name="colorI" value="RedI"> Red
                         <input type="checkbox" name="colorI" value="GreenI"> Green
                         <input type="checkbox" id="colorlessI" value="ColorlessI" onchange="handleColorSelectionForIdentity()"> Colorless
+                        <input type="checkbox" id="colorIExclusive" value="true"> Exclusively these colors
                     </li>
                     <li> <!-- Main types only -->
-                        <label for="type">Card Type:</label>
-                        <select id="type">
-                            <option value="">any</option>
-                            <option value="land">land</option>
-                            <option value="instant">instant</option>
-                            <option value="sorcery">sorcery</option>
-                            <option value="enchantment">enchantment</option>
-                            <option value="creature">creature</option>
-                            <option value="planeswalker">planeswalker</option>
-                            <option value="battle">battle</option>
-                        </select>
+                        <label >Card Type:</label>
+                        <input type="checkbox" name="type" value="land"> land
+                        <input type="checkbox" name="type" value="instant"> instant
+                        <input type="checkbox" name="type" value="sorcery"> sorcery
+                        <input type="checkbox" name="type" value="enchantment"> enchantment
+                        <input type="checkbox" name="type" value="creature"> creature
+                        <input type="checkbox" name="type" value="battle"> battle
+                        <input type="checkbox" name="type" value="planeswalker"> planeswalker
+                        <input type="checkbox" id="typesExclusive" value="true"> Exclusively these types
                     </li>
                     <li> <!-- more types -->
-                        <label for="supertypes">Supertypes:</label>
-                        <select id="supertypes">
-                            <option value="">any</option>
-                            <option value="Legendary">legendary</option>
-                        </select>
+                        <label >Supertypes:</label>
+                        <input type="checkbox" name="superType" value="legendary"> legendary
+                        <input type="checkbox" name="superType" value="basic"> basic
+                        <input type="checkbox" id="supertypesExclusive" value="true"> Exclusively these types
                     </li>
                     <li> <!-- more types -->
-                        <label for="subtypes">Subtypes:</label>
-                        <select id="supertypes">
-                            <option value="">any</option>
-                            <option value="dragon">dragon</option>
-                        </select>
+                        <label >Subtypes:</label>
+                        <input type="checkbox" name="subType" value="dragon"> dragon
+                        <input type="checkbox" name="subType" value="otter"> otter
+                        <input type="checkbox" id="subtypesExclusive" value="true"> Exclusively these types
                     </li>
                     <li> <!-- done -->
                         <label for="rarity">Rarity:</label>
@@ -90,84 +88,57 @@
                             <option value="mythic-rare">mythic</option>
                         </select>
                     </li>
-                    <li>
+                    <li> <!-- done -->
                         <label for="set">Set:</label>
                         <select id="set">
                             <option value="">any</option>
                             <option value="NEO">Neon Dynisty (NEO)</option>
                         </select>
                     </li>
-                    <li>
+                    <li> <!-- done -->
                         <label for="text">Text:</label>
-                        <input type="text" id="text" name="text" value="text">
+                        <input type="text" id="text" name="text">
                     </li>
-                    <li>
+                    <li> <!-- done -->
                         <label for="flavor">Flavor:</label>
-                        <input type="text" id="flavor" name="flavor" value="flavor">
+                        <input type="text" id="flavor" name="flavor">
                     </li>
-        
-                    <li>
+                    <li><!-- done -->
                         <label for="artist">Artist:</label>
-                        <input type="text" id="artist" name="artist" value="artist">
+                        <input type="text" id="artist" name="artist">
                     </li>
-        
-                    <li>
-                        <label for="number">Number:</label>
-                        <input type="text" id="number" name="number" value="number">
-                    </li>
-        
-                    <li>
+                    <li> <!-- done -->
                         <label for="power">Power:</label>
-                        <input type="text" id="power" name="power" value="power">
+                        <input type="number" id="power" name="power" step="1" min="-1" pattern="\d+" value="power">
                     </li>
         
                     <li>
                         <label for="toughness">Toughness:</label>
-                        <input type="text" id="toughness" name="toughness" value="toughness">
+                        <input type="number" id="toughness" name="toughness" step="1" min="-1" pattern="\d+" value="toughness">
                     </li>
         
                     <li>
                         <label for="loyalty">Loyalty:</label>
-                        <input type="text" id="loyalty" name="loyalty" value="loyalty">
+                        <input type="number" id="loyalty" name="loyalty" value="loyalty" step="1" max="7" min="0" pattern="\d+">
                     </li>
-        
                     <li>
                         <label for="language">Language:</label>
-                        <input type="text" id="language" name="language" value="language">
+                        <input type="text" id="language" name="language">
                     </li>
-        
                     <li>
                         <label for="gameFormat">Game Format:</label>
-                        <input type="text" id="gameFormat" name="gameFormat" value="gameFormat">
+                        <input type="text" id="gameFormat" name="gameFormat">
                     </li>
-        
                     <li>
                         <label for="legality">Legality:</label>
-                        <input type="text" id="legality" name="legality" value="legality">
+                        <input type="text" id="legality" name="legality">
                     </li>
                     <li>
                         <label for="orderyBy">Order By:</label>
-                        <input type="text" id="orderyBy" name="orderyBy" value="orderyBy">
+                        <input type="text" id="orderyBy" name="orderyBy">
                     </li>
-        
                     <li>
-                        <label for="random">Random:</label>
-                        <input type="text" id="random" name="random" value="random">
-                    </li>
-        
-                    <li>
-                        <label for="contains">Contains:</label>
-                        <input type="text" id="contains" name="contains" value="contains">
-                    </li>
-        
-                    <li>
-                        <label for="id">ID:</label>
-                        <input type="text" id="id" name="id" value="id">
-                    </li>
-        
-                    <li>
-                        <label for="mulitiverseid">Multiverse ID:</label>
-                        <input type="text" id="mulitiverseid" name="mulitiverseid" value="mulitiverseid">
+                        <button onclick="submitForm()">submit</button>
                     </li>
                 </ul>
             </form>
@@ -175,12 +146,12 @@
 
         <section id="anilitics">
             <h2>Anilitics Section</h2>
-            <p>Query Answers</p>
             <div id="anilitics"></div>
         </section>
 
         <section id="cards">
             <h2>Card Section</h2>
+            <div id="displayCards"></div>
         </section>
     </main>
 

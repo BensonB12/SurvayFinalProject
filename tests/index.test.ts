@@ -1,19 +1,31 @@
-import {tuples, interprilatingStrings, advancedMathmatics} from '../src/index';
+import { CardResponse } from "../src/responseObjects";
+import { getCards } from "../src/index";
 
-describe('testing index file', () => {
-  test('InterpilatingStrings works, should be Hello World', () => {
-    expect(interprilatingStrings()).toBe('Hello World!');
+describe("testing index file", () => {
+  test('getCards with no arguments should resolve to an object with a "cards" property', () => {
+    return expect(getCards()).resolves.toEqual(
+      expect.objectContaining({
+        cards: expect.any(Array),
+      })
+    );
   });
-});
 
-describe('testing index file', () => {
-  test('a = 3, b = 2, c = 1 should be 18', () => {
-    expect(advancedMathmatics(3, 2, 1)).toBe(18);
+  test("the first card should have specific properties", () => {
+    return expect(getCards().then((data) => data.cards[0])).resolves.toEqual(
+      expect.objectContaining({
+        artist: expect.any(String),
+        cmc: expect.any(Number),
+      })
+    );
   });
-});
 
-describe('testing index file', () => {
-  test('empty string should result in zero', () => {
-    expect(tuples('benson', 21)).toBe(['benson', 21]);
+  test("the first card should Ancestor's Chosen", () => {
+    return expect(getCards().then((data) => data.cards[0])).resolves.toEqual(
+      expect.objectContaining({
+        artist: expect.stringMatching("Pete Venters"),
+        name: expect.stringMatching("Ancestor's Chosen"),
+        power: expect.stringMatching("4"),
+      })
+    );
   });
 });

@@ -1,18 +1,23 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const index_1 = require("../src/index");
-describe('testing index file', () => {
-    test('InterpilatingStrings works, should be Hello World', () => {
-        expect((0, index_1.interprilatingStrings)()).toBe('Hello World!');
+describe("testing index file", () => {
+    test('getCards with no arguments should resolve to an object with a "cards" property', () => {
+        return expect((0, index_1.getCards)()).resolves.toEqual(expect.objectContaining({
+            cards: expect.any(Array),
+        }));
     });
-});
-describe('testing index file', () => {
-    test('a = 3, b = 2, c = 1 should be 18', () => {
-        expect((0, index_1.advancedMathmatics)(3, 2, 1)).toBe(18);
+    test("the first card should have specific properties", () => {
+        return expect((0, index_1.getCards)().then((data) => data.cards[0])).resolves.toEqual(expect.objectContaining({
+            artist: expect.any(String),
+            cmc: expect.any(Number),
+        }));
     });
-});
-describe('testing index file', () => {
-    test('empty string should result in zero', () => {
-        expect((0, index_1.tuples)('benson', 21)).toBe(['benson', 21]);
+    test("the first card should Ancestor's Chosen", () => {
+        return expect((0, index_1.getCards)().then((data) => data.cards[0])).resolves.toEqual(expect.objectContaining({
+            artist: expect.stringMatching("Pete Venters"),
+            name: expect.stringMatching("Ancestor's Chosen"),
+            power: expect.stringMatching("4"),
+        }));
     });
 });
