@@ -85,10 +85,44 @@ function getCards(
         });
 }
 
-
-
-
 const world = 'World';
+
+function handleColorSelection(): void {
+    const colorlessCheckbox: HTMLInputElement | null = document.getElementById("colorless") as HTMLInputElement;
+    const colorCheckboxes: NodeListOf<HTMLInputElement> = document.getElementsByName("color") as NodeListOf<HTMLInputElement>;
+
+    // If Colorless is checked, uncheck and disable other color checkboxes
+    if (colorlessCheckbox.checked) {
+        for (let i = 0; i < colorCheckboxes.length; i++) {
+            colorCheckboxes[i].checked = false;
+            colorCheckboxes[i].disabled = true;
+        }
+    } else {
+        // Enable other color checkboxes
+        for (let i = 0; i < colorCheckboxes.length; i++) {
+            colorCheckboxes[i].disabled = false;
+        }
+    }
+}
+
+function handleColorSelectionForIdentity(): void {
+    const colorlessCheckbox: HTMLInputElement | null = document.getElementById("colorlessI") as HTMLInputElement;
+    const colorCheckboxes: NodeListOf<HTMLInputElement> = document.getElementsByName("colorI") as NodeListOf<HTMLInputElement>;
+
+    // If Colorless is checked, uncheck and disable other color checkboxes
+    if (colorlessCheckbox.checked) {
+        for (let i = 0; i < colorCheckboxes.length; i++) {
+            colorCheckboxes[i].checked = false;
+            colorCheckboxes[i].disabled = true;
+        }
+    } else {
+        // Enable other color checkboxes
+        for (let i = 0; i < colorCheckboxes.length; i++) {
+            colorCheckboxes[i].disabled = false;
+        }
+    }
+}
+
 
 export function interprilatingStrings(who: string = world): string {
     // Interprilating strings
@@ -103,6 +137,23 @@ export function advancedMathmatics(a: number, b: number, c: number ): number {
 export function tuples(a: string, b: number): [string, number] {
     // Tuples can be used in typescript
     return [a, b];
+}
+
+function submitForm() {
+    const cardNameInput = document.getElementById('cardName') as HTMLInputElement;
+    const resultDiv = document.getElementById('anilitics');
+
+    if (cardNameInput && resultDiv) {
+        if(cardNameInput.value)
+        {
+            resultDiv.innerText = `You want the card: ${cardNameInput.value}`;
+
+        } else {
+            resultDiv.innerText = 'Please enter a card name.';
+        }
+    } else {
+        console.error('carNameInput or anilitics div not found.');
+    }
 }
 
 console.log(interprilatingStrings());

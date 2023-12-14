@@ -81,6 +81,40 @@ supertypes, types, subtypes, rarity, set, setName, text, flavor, artist, number,
     });
 }
 var world = 'World';
+function handleColorSelection() {
+    var colorlessCheckbox = document.getElementById("colorless");
+    var colorCheckboxes = document.getElementsByName("color");
+    // If Colorless is checked, uncheck and disable other color checkboxes
+    if (colorlessCheckbox.checked) {
+        for (var i = 0; i < colorCheckboxes.length; i++) {
+            colorCheckboxes[i].checked = false;
+            colorCheckboxes[i].disabled = true;
+        }
+    }
+    else {
+        // Enable other color checkboxes
+        for (var i = 0; i < colorCheckboxes.length; i++) {
+            colorCheckboxes[i].disabled = false;
+        }
+    }
+}
+function handleColorSelectionForIdentity() {
+    var colorlessCheckbox = document.getElementById("colorlessI");
+    var colorCheckboxes = document.getElementsByName("colorI");
+    // If Colorless is checked, uncheck and disable other color checkboxes
+    if (colorlessCheckbox.checked) {
+        for (var i = 0; i < colorCheckboxes.length; i++) {
+            colorCheckboxes[i].checked = false;
+            colorCheckboxes[i].disabled = true;
+        }
+    }
+    else {
+        // Enable other color checkboxes
+        for (var i = 0; i < colorCheckboxes.length; i++) {
+            colorCheckboxes[i].disabled = false;
+        }
+    }
+}
 function interprilatingStrings(who) {
     if (who === void 0) { who = world; }
     // Interprilating strings
@@ -97,6 +131,21 @@ function tuples(a, b) {
     return [a, b];
 }
 exports.tuples = tuples;
+function submitForm() {
+    var cardNameInput = document.getElementById('cardName');
+    var resultDiv = document.getElementById('anilitics');
+    if (cardNameInput && resultDiv) {
+        if (cardNameInput.value) {
+            resultDiv.innerText = "You want the card: ".concat(cardNameInput.value);
+        }
+        else {
+            resultDiv.innerText = 'Please enter a card name.';
+        }
+    }
+    else {
+        console.error('carNameInput or anilitics div not found.');
+    }
+}
 console.log(interprilatingStrings());
 console.log(advancedMathmatics(3, 2, 1));
 console.log(tuples('Benson', 21));

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+<link rel="stylesheet" type="text/css" href="home.css">
 
 <head>
     <meta charset="UTF-8">
@@ -16,13 +17,176 @@
     <main>
         <section id="home">
             <h2>Home Section</h2>
-            <p>This is the main content of your home section.</p>
+            <form id="cardForm">
+                <ul>
+                    <li> <!-- done -->
+                        <label for="cardName">Card Name:</label>
+                        <input type="text" id="cardName"/>
+                    </li>
+                    <li> <!-- ..Other layouts? -->
+                        <label for="layout">Card Layout:</label>
+                        <select id="layout">
+                            <option value="">any</option>
+                            <!-- <option value="">single faced</option> -->
+                            <option value="double-faced">double faced</option>
+                        </select>
+                    </li>
+                    <li> <!-- done -->
+                        <label for="cmc">Converted Mana Cost:</label>
+                        <input type="number" id="cmc" step="1" min="0" pattern="\d+"/>
+                    </li>
+                    <li> <!-- done -->
+                        <label for="colors">Colors:</label>
+                        <input type="checkbox" name="color" value="White"> White
+                        <input type="checkbox" name="color" value="Blue"> Blue
+                        <input type="checkbox" name="color" value="Black"> Black
+                        <input type="checkbox" name="color" value="Red"> Red
+                        <input type="checkbox" name="color" value="Green"> Green
+                        <input type="checkbox" id="colorless" value="Colorless" onchange="handleColorSelection()"> Colorless
+                    </li>
+                    <li> <!-- done -->
+                        <label for="colorIdentity">Color Identity:</label>
+                        <input type="checkbox" name="colorI" value="WhiteI"> White
+                        <input type="checkbox" name="colorI" value="BlueI"> Blue
+                        <input type="checkbox" name="colorI" value="BlackI"> Black
+                        <input type="checkbox" name="colorI" value="RedI"> Red
+                        <input type="checkbox" name="colorI" value="GreenI"> Green
+                        <input type="checkbox" id="colorlessI" value="ColorlessI" onchange="handleColorSelectionForIdentity()"> Colorless
+                    </li>
+                    <li> <!-- Main types only -->
+                        <label for="type">Card Type:</label>
+                        <select id="type">
+                            <option value="">any</option>
+                            <option value="land">land</option>
+                            <option value="instant">instant</option>
+                            <option value="sorcery">sorcery</option>
+                            <option value="enchantment">enchantment</option>
+                            <option value="creature">creature</option>
+                            <option value="planeswalker">planeswalker</option>
+                            <option value="battle">battle</option>
+                        </select>
+                    </li>
+                    <li> <!-- more types -->
+                        <label for="supertypes">Supertypes:</label>
+                        <select id="supertypes">
+                            <option value="">any</option>
+                            <option value="Legendary">legendary</option>
+                        </select>
+                    </li>
+                    <li> <!-- more types -->
+                        <label for="subtypes">Subtypes:</label>
+                        <select id="supertypes">
+                            <option value="">any</option>
+                            <option value="dragon">dragon</option>
+                        </select>
+                    </li>
+                    <li> <!-- done -->
+                        <label for="rarity">Rarity:</label>
+                        <select id="rarity">
+                            <option value="">any</option>
+                            <option value="common">common</option>
+                            <option value="uncommon">uncommon</option>
+                            <option value="rare">rare</option>
+                            <option value="mythic-rare">mythic</option>
+                        </select>
+                    </li>
+                    <li>
+                        <label for="set">Set:</label>
+                        <select id="set">
+                            <option value="">any</option>
+                            <option value="NEO">Neon Dynisty (NEO)</option>
+                        </select>
+                    </li>
+                    <li>
+                        <label for="text">Text:</label>
+                        <input type="text" id="text" name="text" value="text">
+                    </li>
+                    <li>
+                        <label for="flavor">Flavor:</label>
+                        <input type="text" id="flavor" name="flavor" value="flavor">
+                    </li>
+        
+                    <li>
+                        <label for="artist">Artist:</label>
+                        <input type="text" id="artist" name="artist" value="artist">
+                    </li>
+        
+                    <li>
+                        <label for="number">Number:</label>
+                        <input type="text" id="number" name="number" value="number">
+                    </li>
+        
+                    <li>
+                        <label for="power">Power:</label>
+                        <input type="text" id="power" name="power" value="power">
+                    </li>
+        
+                    <li>
+                        <label for="toughness">Toughness:</label>
+                        <input type="text" id="toughness" name="toughness" value="toughness">
+                    </li>
+        
+                    <li>
+                        <label for="loyalty">Loyalty:</label>
+                        <input type="text" id="loyalty" name="loyalty" value="loyalty">
+                    </li>
+        
+                    <li>
+                        <label for="language">Language:</label>
+                        <input type="text" id="language" name="language" value="language">
+                    </li>
+        
+                    <li>
+                        <label for="gameFormat">Game Format:</label>
+                        <input type="text" id="gameFormat" name="gameFormat" value="gameFormat">
+                    </li>
+        
+                    <li>
+                        <label for="legality">Legality:</label>
+                        <input type="text" id="legality" name="legality" value="legality">
+                    </li>
+                    <li>
+                        <label for="orderyBy">Order By:</label>
+                        <input type="text" id="orderyBy" name="orderyBy" value="orderyBy">
+                    </li>
+        
+                    <li>
+                        <label for="random">Random:</label>
+                        <input type="text" id="random" name="random" value="random">
+                    </li>
+        
+                    <li>
+                        <label for="contains">Contains:</label>
+                        <input type="text" id="contains" name="contains" value="contains">
+                    </li>
+        
+                    <li>
+                        <label for="id">ID:</label>
+                        <input type="text" id="id" name="id" value="id">
+                    </li>
+        
+                    <li>
+                        <label for="mulitiverseid">Multiverse ID:</label>
+                        <input type="text" id="mulitiverseid" name="mulitiverseid" value="mulitiverseid">
+                    </li>
+                </ul>
+            </form>
+        </section>
+
+        <section id="anilitics">
+            <h2>Anilitics Section</h2>
+            <p>Query Answers</p>
+            <div id="anilitics"></div>
+        </section>
+
+        <section id="cards">
+            <h2>Card Section</h2>
         </section>
     </main>
 
     <footer>
         <p>Benson's MTG Data Antalitics is unofficial Fan Content permitted under the Fan Content Policy. Not approved/endorsed by Wizards. Portions of the materials used are property of Wizards of the Coast. ©Wizards of the Coast LLC.</p>
     </footer>
+    <script src="index.js"></script>
 </body>
-
 </html>
