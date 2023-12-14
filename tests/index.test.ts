@@ -1,4 +1,3 @@
-import { CardResponse } from "../src/responseObjects";
 import { getCards } from "../src/index";
 
 describe("testing index file", () => {

@@ -1,34 +1,16 @@
 "use strict";
 // Axios https://rapidapi.com/guides/call-apis-using-axios-in-typescript
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.getCards = void 0;
+// import "../node_modules";
+const axios_1 = __importDefault(require("axios"));
 //const { CardResponse } = require("./responseObjects.js");
-var axios = require("axios");
-function getCards(name, layout, cmc, colors, colorIdentity, supertypes, types, // UTF8 ‘long dash’
-subtypes, rarity, set, text, flavor, artist, power, toughness, loyalty, language, gameFormat, legality, page, pageSize, orderyBy) {
-    if (name === void 0) { name = ""; }
-    if (layout === void 0) { layout = ""; }
-    if (cmc === void 0) { cmc = ""; }
-    if (colors === void 0) { colors = ""; }
-    if (colorIdentity === void 0) { colorIdentity = ""; }
-    if (supertypes === void 0) { supertypes = ""; }
-    if (types === void 0) { types = ""; }
-    if (subtypes === void 0) { subtypes = ""; }
-    if (rarity === void 0) { rarity = ""; }
-    if (set === void 0) { set = ""; }
-    if (text === void 0) { text = ""; }
-    if (flavor === void 0) { flavor = ""; }
-    if (artist === void 0) { artist = ""; }
-    if (power === void 0) { power = ""; }
-    if (toughness === void 0) { toughness = ""; }
-    if (loyalty === void 0) { loyalty = ""; }
-    if (language === void 0) { language = ""; }
-    if (gameFormat === void 0) { gameFormat = ""; }
-    if (legality === void 0) { legality = ""; }
-    if (page === void 0) { page = ""; }
-    if (pageSize === void 0) { pageSize = "50"; }
-    if (orderyBy === void 0) { orderyBy = ""; }
-    var options = {
+function getCards(name = "", layout = "", cmc = "", colors = "", colorIdentity = "", supertypes = "", types = "", // UTF8 ‘long dash’
+subtypes = "", rarity = "", set = "", text = "", flavor = "", artist = "", power = "", toughness = "", loyalty = "", language = "", gameFormat = "", legality = "", page = "", pageSize = "50", orderyBy = "") {
+    const options = {
         method: "Get",
         url: "https://api.magicthegathering.io/v1/cards?",
         params: {
@@ -57,70 +39,70 @@ subtypes, rarity, set, text, flavor, artist, power, toughness, loyalty, language
         },
         headers: {},
     };
-    return axios
+    return axios_1.default
         .request(options)
-        .then(function (_a) {
-        var data = _a.data;
+        .then(function ({ data }) {
         return data;
     })
         .catch(function (error) {
         console.error(error);
+        throw new Error("Problem with calling my api");
     });
 }
 exports.getCards = getCards;
 function submitForm() {
     //Get all the users input
-    var cardNameInput = document.getElementById("cardName");
-    var name = getElementValueById("name");
-    var layout = getElementValueById("layout");
-    var cmc = getElementValueById("cmc"); // Assuming cmc is a number
-    var colors = Array.from(document.getElementsByName("color"));
-    var colorsExclusive = Boolean(getElementValueById("colorsExclusive"));
-    var colorIdentity = Array.from(document.getElementsByName("colorI"));
-    var colorIExclusive = Boolean(getElementValueById("colorIExclusive"));
-    var types = Array.from(document.getElementsByName("type"));
-    var typesExclusive = Boolean(getElementValueById("typesExclusive"));
-    var supertypes = Array.from(document.getElementsByName("superType"));
-    var supertypesExclusive = Boolean(getElementValueById("supertypesExclusive"));
-    var subtypes = Array.from(document.getElementsByName("subType"));
-    var subtypesExclusive = Boolean(getElementValueById("subtypesExclusive"));
-    var rarity = getElementValueById("rarity");
-    var set = getElementValueById("set");
-    var text = getElementValueById("text");
-    var flavor = getElementValueById("flavor");
-    var artist = getElementValueById("artist");
-    var power = getElementValueById("power");
-    var toughness = getElementValueById("toughness");
-    var loyalty = getElementValueById("loyalty");
-    var language = getElementValueById("language");
-    var gameFormat = getElementValueById("gameFormat");
-    var legality = getElementValueById("legality");
-    var orderyBy = getElementValueById("orderyBy");
+    const cardNameInput = document.getElementById("cardName");
+    const name = getElementValueById("name");
+    const layout = getElementValueById("layout");
+    const cmc = getElementValueById("cmc"); // Assuming cmc is a number
+    const colors = Array.from(document.getElementsByName("color"));
+    const colorsExclusive = Boolean(getElementValueById("colorsExclusive"));
+    const colorIdentity = Array.from(document.getElementsByName("colorI"));
+    const colorIExclusive = Boolean(getElementValueById("colorIExclusive"));
+    const types = Array.from(document.getElementsByName("type"));
+    const typesExclusive = Boolean(getElementValueById("typesExclusive"));
+    const supertypes = Array.from(document.getElementsByName("superType"));
+    const supertypesExclusive = Boolean(getElementValueById("supertypesExclusive"));
+    const subtypes = Array.from(document.getElementsByName("subType"));
+    const subtypesExclusive = Boolean(getElementValueById("subtypesExclusive"));
+    const rarity = getElementValueById("rarity");
+    const set = getElementValueById("set");
+    const text = getElementValueById("text");
+    const flavor = getElementValueById("flavor");
+    const artist = getElementValueById("artist");
+    const power = getElementValueById("power");
+    const toughness = getElementValueById("toughness");
+    const loyalty = getElementValueById("loyalty");
+    const language = getElementValueById("language");
+    const gameFormat = getElementValueById("gameFormat");
+    const legality = getElementValueById("legality");
+    const orderyBy = getElementValueById("orderyBy");
     //Add Colorless to the colors
     colors.push(document.getElementById("colorless"));
     colorIdentity.push(document.getElementById("colorlessI"));
     //Where I am going to put the results
-    var displayCards = document.getElementById("displayCards");
-    var resultDiv = document.getElementById("anilitics");
-    var cardsToDisplay = getCards(name, layout, cmc, colorsExclusive ? colors.toString() : makeNonExclusive(colors), colorIExclusive
+    const displayCards = document.getElementById("displayCards");
+    const resultDiv = document.getElementById("anilitics");
+    const cardsToDisplay = getCards(name, layout, cmc, colorsExclusive ? colors.toString() : makeNonExclusive(colors), colorIExclusive
         ? colorIdentity.toString()
-        : makeNonExclusive(colorIdentity), supertypesExclusive ? supertypes.toString() : makeNonExclusive(supertypes), typesExclusive ? types.toString() : makeNonExclusive(types), subtypesExclusive ? subtypes.toString() : makeNonExclusive(subtypes), rarity, set, text, flavor, artist, power, toughness, loyalty, language, gameFormat, legality).then(function (data) { return data; });
+        : makeNonExclusive(colorIdentity), supertypesExclusive ? supertypes.toString() : makeNonExclusive(supertypes), typesExclusive ? types.toString() : makeNonExclusive(types), subtypesExclusive ? subtypes.toString() : makeNonExclusive(subtypes), rarity, set, text, flavor, artist, power, toughness, loyalty, language, gameFormat, legality).then((data) => data);
     if (displayCards && resultDiv) {
-        var s_1 = "";
-        var sum_1 = 0;
+        let s = "";
+        let sum = 0;
         cardsToDisplay
-            .then(function (data) {
-            data.cards.forEach(function (e) {
-                s_1 += "<img src=\"".concat(e.imageUrl, "\" alt=\"").concat(e.name, "\" />");
-                sum_1 += e.cmc;
+            .then((data) => {
+            data.cards.forEach((e) => {
+                s += `<img src="${e.imageUrl}" alt="${e.name}" />`;
+                sum += e.cmc;
             });
             // Display the images
-            displayCards.innerHTML = s_1;
+            displayCards.innerHTML = s;
             // Calculate and display the average cmc
-            var averageCmc = data.cards.length > 0 ? sum_1 / data.cards.length : 0;
-            resultDiv.innerHTML = "<p>Average cmc: ".concat(averageCmc.toFixed(2), "</p>");
+            const averageCmc = data.cards.length > 0 ? sum / data.cards.length : 0;
+            resultDiv.innerHTML = `<p>Average cmc: ${averageCmc.toFixed(2)}</p>`;
         })
-            .catch(function (error) {
+            .catch((error) => {
             // Handle the case where cardsToDisplay is rejected
             console.error(error);
             resultDiv.innerHTML = "<p>Error fetching card data</p>";
@@ -128,8 +110,8 @@ function submitForm() {
     }
 }
 function makeNonExclusive(a) {
-    var s = "";
-    for (var i = 0; i < a.length; i++) {
+    let s = "";
+    for (let i = 0; i < a.length; i++) {
         s += a[i];
         if (i < a.length - 1) {
             s += "|";
@@ -138,40 +120,40 @@ function makeNonExclusive(a) {
     return s;
 }
 function getElementValueById(id) {
-    var element = document.getElementById(id);
+    const element = document.getElementById(id);
     return element ? element.value : "";
 }
-var world = "World";
+const world = "World";
 function handleColorSelection() {
-    var colorlessCheckbox = document.getElementById("colorless");
-    var colorCheckboxes = document.getElementsByName("color");
+    const colorlessCheckbox = document.getElementById("colorless");
+    const colorCheckboxes = document.getElementsByName("color");
     // If Colorless is checked, uncheck and disable other color checkboxes
     if (colorlessCheckbox.checked) {
-        for (var i = 0; i < colorCheckboxes.length; i++) {
+        for (let i = 0; i < colorCheckboxes.length; i++) {
             colorCheckboxes[i].checked = false;
             colorCheckboxes[i].disabled = true;
         }
     }
     else {
         // Enable other color checkboxes
-        for (var i = 0; i < colorCheckboxes.length; i++) {
+        for (let i = 0; i < colorCheckboxes.length; i++) {
             colorCheckboxes[i].disabled = false;
         }
     }
 }
 function handleColorSelectionForIdentity() {
-    var colorlessCheckbox = document.getElementById("colorlessI");
-    var colorCheckboxes = document.getElementsByName("colorI");
+    const colorlessCheckbox = document.getElementById("colorlessI");
+    const colorCheckboxes = document.getElementsByName("colorI");
     // If Colorless is checked, uncheck and disable other color checkboxes
     if (colorlessCheckbox.checked) {
-        for (var i = 0; i < colorCheckboxes.length; i++) {
+        for (let i = 0; i < colorCheckboxes.length; i++) {
             colorCheckboxes[i].checked = false;
             colorCheckboxes[i].disabled = true;
         }
     }
     else {
         // Enable other color checkboxes
-        for (var i = 0; i < colorCheckboxes.length; i++) {
+        for (let i = 0; i < colorCheckboxes.length; i++) {
             colorCheckboxes[i].disabled = false;
         }
     }

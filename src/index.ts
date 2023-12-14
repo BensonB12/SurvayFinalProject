@@ -3,10 +3,11 @@
 // npm install axios
 
 // npm i --save-dev @types/node
-
+//import { exports, require } from "./myModule.js";
 import { CardResponse } from "./responseObjects.js";
+// import "../node_modules";
+import axios from "axios";
 //const { CardResponse } = require("./responseObjects.js");
-const axios = require("axios");
 
 export function getCards(
   name: string = "",
@@ -68,6 +69,7 @@ export function getCards(
     })
     .catch(function (error: any) {
       console.error(error);
+      throw new Error("Problem with calling my api");
     });
 }
 

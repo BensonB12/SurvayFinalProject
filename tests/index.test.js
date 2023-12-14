@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const index_1 = require("../src/index");
+const index_1 = require("../index");
 describe("testing index file", () => {
     test('getCards with no arguments should resolve to an object with a "cards" property', () => {
         return expect((0, index_1.getCards)()).resolves.toEqual(expect.objectContaining({
