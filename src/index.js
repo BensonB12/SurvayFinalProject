@@ -11,7 +11,6 @@ const axios_1 = __importDefault(require("axios"));
 function getCards(name = "", layout = "", cmc = "", colors = "", colorIdentity = "", supertypes = "", types = "", // UTF8 ‘long dash’
 subtypes = "", rarity = "", set = "", text = "", flavor = "", artist = "", power = "", toughness = "", loyalty = "", language = "", gameFormat = "", legality = "", page = "", pageSize = "50", orderyBy = "") {
     const options = {
-        method: "Get",
         url: "https://api.magicthegathering.io/v1/cards?",
         params: {
             name: name,

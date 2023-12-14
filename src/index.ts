@@ -34,7 +34,6 @@ export function getCards(
   orderyBy: string = ""
 ): Promise<CardResponse> {
   const options = {
-    method: "Get",
     url: "https://api.magicthegathering.io/v1/cards?",
     params: {
       name: name,
@@ -178,10 +177,10 @@ function submitForm() {
   }
 }
 
-function makeNonExclusive(a: Array<HTMLInputElement>): string {
+export function makeNonExclusive(a: Array<HTMLInputElement>): string {
   let s: string = "";
   for (let i = 0; i < a.length; i++) {
-    s += a[i];
+    s += a[i].value;
     if (i < a.length - 1) {
       s += "|";
     }

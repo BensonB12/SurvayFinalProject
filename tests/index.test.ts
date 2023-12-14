@@ -1,4 +1,5 @@
-import { getCards } from "../src/index";
+import { getCards, makeNonExclusive } from "../src/index";
+const { JSDOM } = require('jsdom');
 
 describe("testing index file", () => {
   test('getCards with no arguments should resolve to an object with a "cards" property', () => {
@@ -26,5 +27,15 @@ describe("testing index file", () => {
         power: expect.stringMatching("4"),
       })
     );
+  });
+
+  test("I return the right string from makeNonExclusive", () => {
+    const dom = new JSDOM();
+    const document = dom.window.document;
+    const el1 = document.createElement("input");
+    el1.value = "W";
+    const el2 = document.createElement("input");
+    el2.value = "U";
+    return expect(makeNonExclusive([el1, el2])).toBe("W|U");
   });
 });
